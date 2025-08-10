@@ -8,16 +8,16 @@ class Queue:
         return len(self.queue) == 0
     
     def size(self):
-        pass
+        return len(self.queue)
     
     def enqueue(self, item):
-        pass
+        self.queue.append(item)
     
     def dequeue(self):
-        pass
+        return self.queue.pop(0)
     
     def peek(self):
-        pass
+        return self.queue[0] if len(self.queue) != 0 else raise Exception ("Array is Empty!!!")
     
     def display(self):
-        pass
+        print(self.queue)
