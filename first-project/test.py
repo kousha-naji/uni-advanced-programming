@@ -1,22 +1,17 @@
+vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+
 def vowel_finder(word):
-    vowels = ['a', 'e', 'i', 'o', 'u', 'y']
     vowels_in_word = [char for char in word.lower() if char in vowels]
-    if vowels_in_word == vowels:
-        words_found.append(word)
-    return ''
-
-words_found = []
-
+    return vowels_in_word == vowels
 
 try:
-    with open('ipsum.txt', 'r') as f:
+    filename = input("Enter file name: ")
+    with open(filename, 'r') as f:
         content = f.read()
 except FileNotFoundError:
     print("File not found!")
+    exit(1)
 
-words = content.split()
-uppercase_words = [word.upper() for word in words]
-for word in uppercase_words:
-    vowel_finder(word)    
+words_found = [word for word in content.split() if vowel_finder(word)]
 
-print(words_found)  
+print(words_found if words_found else "No matching words found.")
